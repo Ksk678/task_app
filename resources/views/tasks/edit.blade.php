@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 </head>
 
 <body>
@@ -30,16 +32,16 @@
         <p>
             <label for="title">タイトル</label><br>
             <input type="text" name="title" id="title" value="{{ old('title', $task->title) }}">
-        <p>{!! nl2br(e($task->title)) !!}</p>
+        </p>
         <p>
             <label for="body">内容</label><br>
             <textarea name="body" class="body" id="body">{{ old('body', $task->body) }}</textarea>
-        <p>{!! nl2br(e($task->body)) !!}</p>
-
-        <button onclick="location.href='{{ route('tasks.edit', $task) }}'">編集する</button>
-        <a href="{{ route('tasks.index') }}">詳細へ戻る</a>
-
-        <input type="submit" value="更新">
+        </p>
+        <div class="button-group">
+            <input type="submit" value="更新">
+            <button type="button"
+                onclick="location.href='{{ route('tasks.show', $task) }}'; return false;">詳細へ戻る</button>
+        </div>
     </form>
 </body>
 
